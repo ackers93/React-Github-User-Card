@@ -15,8 +15,10 @@ class App extends React.Component {
 
   fetchFollowers() {
     axios.get("https://api.github.com/users/ackers93/followers").then(response => {
+      console.log(response);
       this.setState({ ...this.state, followers: response.data})
-    });
+    })
+    .catch(err => console.log(err));
   }
 
   componentDidMount() {
@@ -26,16 +28,18 @@ class App extends React.Component {
         this.setState({ users: response.data });
       })
       .catch(err => console.log(err));
+      this.fetchFollowers();
   }
 
   render() {  
     return (
-    <div className="App">
-      <UserCard users={this.state.users}/>
-      <FollowersCard followers={this.state.followers}/>
-    </div>
-  );}
-
+      <div className="App">
+        <UserCard users={this.state.users}/>
+        <FollowersCard followers={this.state.followers}/>
+      </div>
+    )
+  } 
 }
+
 
 export default App;

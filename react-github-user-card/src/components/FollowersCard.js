@@ -1,16 +1,19 @@
 import React from 'react';
 
 const FollowersCard = props => {
+    console.log(props);
   return (
     <div>
-    <img src={props.followers.avatar_url} alt="profile" />
-    <h1>{props.followers.name}</h1>
-    <h2>{props.followers.login}</h2>
-    <h3>{props.followers.bio}</h3>
-    <h3>{props.followers.followers}</h3>
-    <h3>{props.followers.following}</h3>
+    {props.followers.map(data => {
+        return (
+            <div>
+                <img src={data.avatar_url} alt="profile" />
+                <h2>{data.login}</h2>
+            </div>
+        )
+    })}
     </div>
-  );
+  )
 };
 
 export default FollowersCard
