@@ -2,7 +2,12 @@ import React from 'react';
 import axios from "axios";
 import UserCard from "./components/Usercard"
 import FollowersCard from "./components/FollowersCard"
-import './App.css';
+import styled from 'styled-components';
+
+const CardList = styled.div`
+  margin: 0 auto; 
+  width: 90%;
+`
 
 class App extends React.Component {
   constructor() {
@@ -33,10 +38,10 @@ class App extends React.Component {
 
   render() {  
     return (
-      <div className="App">
+      <CardList className="App">
         <UserCard users={this.state.users}/>
         <FollowersCard followers={this.state.followers}/>
-      </div>
+      </CardList>
     )
   } 
 }
